@@ -10,10 +10,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentPage = Number(searchParams?.get('page')?? 1) || 1;
   
+  // Validamos si searchParams no es null y obtenemos la página actual
+  const currentPage = searchParams ? Number(searchParams.get('page')) || 1 : 1;
+  
+  // Validamos que searchParams no sea null antes de usarlo en URLSearchParams
   const createPageURL = (pageNumber: number | string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = searchParams ? new URLSearchParams(searchParams) : new URLSearchParams();
     params.set('page', pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
