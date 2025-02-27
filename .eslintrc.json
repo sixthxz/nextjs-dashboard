@@ -1,6 +1,13 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
-    "next/typescript"
+    "next/typescript",
+    "next"
+  ],
+  "plugins": [
+    "@typescript-eslint"
   ]
 }
